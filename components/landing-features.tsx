@@ -106,7 +106,7 @@ export function LandingFeatures() {
           <div className="mt-20 relative rounded-lg overflow-hidden shadow-xl">
             <div className="aspect-video relative">
               <Image
-                src="/placeholder.svg?height=720&width=1280"
+                src="/dashboard.png?height=720&width=1280"
                 alt="Dashboard do PedeAí"
                 fill
                 className="object-cover"

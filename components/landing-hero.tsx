@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
@@ -10,10 +10,10 @@ import { ShoppingBag, ArrowRight } from "lucide-react"
 export function LandingHero() {
   const [mounted, setMounted] = useState(false)
 
-  // Usar useState para evitar erros de hidratação
-  useState(() => {
+  // Use useEffect instead of useState for initialization
+  useEffect(() => {
     setMounted(true)
-  })
+  }, [])
 
   // Renderização estática para SSR
   if (!mounted) {
@@ -44,7 +44,7 @@ export function LandingHero() {
             </div>
             <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/placeholder.svg?height=500&width=500"
+                src="/logo.png"
                 alt="Dashboard do PedeAí"
                 fill
                 className="object-cover"
@@ -101,7 +101,7 @@ export function LandingHero() {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/placeholder.svg?height=500&width=500"
+              src="/logo.png"
               alt="Dashboard do PedeAí"
               fill
               className="object-cover"
@@ -113,4 +113,3 @@ export function LandingHero() {
     </section>
   )
 }
-

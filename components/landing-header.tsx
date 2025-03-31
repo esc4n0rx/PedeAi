@@ -1,9 +1,8 @@
 "use client"
-
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
-import { ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
@@ -11,7 +10,6 @@ import { cn } from "@/lib/utils"
 export function LandingHeader() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-
   const routes = [
     {
       href: "/#features",
@@ -30,15 +28,21 @@ export function LandingHeader() {
       label: "Blog",
     },
   ]
-
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <ShoppingBag className="h-6 w-6 text-primary" />
+          <div className="relative h-8 w-8">
+            <Image 
+              src="/mascote.png" 
+              alt="PedeAí Mascote" 
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
           <span className="font-fredoka text-xl font-bold">PedeAí</span>
         </Link>
-
         <nav className="hidden md:flex gap-6">
           {routes.map((route) => (
             <Link
@@ -53,7 +57,6 @@ export function LandingHeader() {
             </Link>
           ))}
         </nav>
-
         <div className="flex items-center gap-4">
           <div className="hidden md:flex gap-2">
             <Button variant="ghost" asChild>
@@ -63,7 +66,6 @@ export function LandingHeader() {
               <Link href="/registro">Registrar</Link>
             </Button>
           </div>
-
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
@@ -121,4 +123,3 @@ export function LandingHeader() {
     </header>
   )
 }
-
