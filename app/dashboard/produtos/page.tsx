@@ -9,7 +9,7 @@ import { formatCurrency } from "@/lib/utils"
 import { Package, Plus, PenLine, Trash } from "lucide-react"
 import { useAuth } from "@/components/auth-provider"
 import ProductEditModal from "@/components/product-edit-modal"
-import ProductAddModal from "@/components/product-add-modaL"
+import ProductAddModal from "@/components/product-add-modal"
 
 interface StoreData {
   id: string
