@@ -17,7 +17,6 @@ import { checkSupabaseConnection, testImageUpload } from "@/lib/supabase-diagnos
 import { DynamicDebugPanel } from "@/components/dynamic-debug-panel"
 import { uploadImage as cloudinaryUpload } from '@/lib/cloudinary-helper';
 
-// Logger para acompanhar o fluxo da aplicação
 const logger = {
   info: (message: string, data?: any) => {
     console.log(`%c[INFO] ${message}`, 'color: blue; font-weight: bold', data || '');
@@ -70,17 +69,14 @@ export function CreateStoreForm({ userId: propUserId }: CreateStoreFormProps) {
   
   const router = useRouter()
   const { toast } = useToast()
-  const { supabase } = useSupabase() // Usando a versão corrigida do hook
+  const { supabase } = useSupabase() 
   const [isLoading, setIsLoading] = useState(false)
   const [userId, setUserId] = useState<string | null>(propUserId || null)
   const [logoPreview, setLogoPreview] = useState<string | null>(null)
   const [coverPreview, setCoverPreview] = useState<string | null>(null)
-
-  // Estado para diagnóstico do Supabase
   const [supabaseDiagnostics, setSupabaseDiagnostics] = useState<any>(null);
   const [debugMode, setDebugMode] = useState(process.env.NODE_ENV === 'development');
 
-  // Verificar Supabase e fazer diagnóstico
   useEffect(() => {
     const runDiagnostics = async () => {
       if (!supabase) {
@@ -109,7 +105,6 @@ export function CreateStoreForm({ userId: propUserId }: CreateStoreFormProps) {
     runDiagnostics();
   }, [supabase, toast, debugMode]);
 
-  // Obter ID do usuário, se não fornecido como prop
   useEffect(() => {
     if (propUserId) {
       setUserId(propUserId);
