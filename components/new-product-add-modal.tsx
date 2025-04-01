@@ -18,7 +18,7 @@ interface ProductAddModalProps {
   storeId: string
 }
 
-export default function ProductAddModal({ isOpen, onClose, onProductAdded, storeId }: ProductAddModalProps) {
+export default function NewProductAddModal({ isOpen, onClose, onProductAdded, storeId }: ProductAddModalProps) {
   const [isUploading, setIsUploading] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
   const [previewImage, setPreviewImage] = useState<string | null>(null)

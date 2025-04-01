@@ -9,7 +9,8 @@ import { formatCurrency } from "@/lib/utils"
 import { Package, Plus, PenLine, Trash } from "lucide-react"
 import { useAuth } from "@/components/auth-provider"
 import ProductEditModal from "@/components/product-edit-modal"
-import ProductAddModal from "../../../components/product-add-modal"
+// Importe o componente com um novo nome
+import NewProductAddModal from "@/components/new-product-add-modal"
 
 interface StoreData {
   id: string
@@ -271,9 +272,9 @@ export default function ProductsPage() {
         />
       )}
 
-      {/* Modal de adição de produtos */}
+      {/* Modal de adição de produtos - usando o novo componente */}
       {storeData && (
-        <ProductAddModal 
+        <NewProductAddModal 
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}
           onProductAdded={handleProductChanged}
